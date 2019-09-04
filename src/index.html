@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas {
+            margin: 10px;
+            background: #fff;
+            border: thin inset #aaaaaa;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="300"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas');
+        let context = canvas.getContext('2d');
+
+        context.font = '30pt Arial';
+        context.fillStyle = 'red';
+        context.strokeStyle = 'blue';
+        context.fillText('Hello', canvas.width / 2, canvas.height / 2);
+        context.strokeText('Hello', canvas.width / 2, canvas.height / 2);
+    </script>
+</body>
+
+</html>
