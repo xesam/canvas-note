@@ -1,2 +1,33 @@
 设置 canvas 的尺寸的时候，不应该使用 px 单位，这是不被canvas 规范所接受的。
 
+canvas 实际上有两套尺寸：
+
+1. canvas 元素本身的大小
+2. 元素绘图表面（drawing surface）的大小
+
+其他的操作系统里面有类似的问题吗？android 好像没有。
+
+
+## canvas 
+
+两个属性，三个方法：
+
+1. width
+2. height
+
+getContext()
+getDataURL(type, quality)
+toBlob(callback, type, ...args)
+
+## 2D Context 
+
+全部属性：
+
+## save() restore()
+
+堆栈，绘图环境
+
+这里的“绘图环境”包括哪些内容呢？
+
+
+

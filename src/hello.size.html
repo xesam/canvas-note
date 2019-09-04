@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas-1 {
+            margin: 10px;
+            background: #fff;
+            border: thin inset #aaaaaa;
+        }
+
+        #canvas-2 {
+            margin: 10px;
+            background: #fff;
+            border: thin inset #aaaaaa;
+            width: 600px;
+            height: 600px;
+        }
+
+        #canvas-3 {
+            margin: 10px;
+            background: #fff;
+            border: thin inset #aaaaaa;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas-1" width="300" height="300"></canvas>
+    <canvas id="canvas-2" width="300" height="300"></canvas>
+    <canvas id="canvas-3" width="300" height="300"></canvas>
+    <script>
+        function draw(id) {
+            let canvas = document.getElementById(id);
+            console.log(canvas.width, canvas.height);
+            let context = canvas.getContext('2d');
+
+            context.font = '30pt Arial';
+            context.fillStyle = 'red';
+            context.strokeStyle = 'blue';
+            context.fillText('Hello', 0, 300);
+        }
+
+        draw('canvas-1');
+        draw('canvas-2');
+        draw('canvas-3');
+    </script>
+</body>
+
+</html>
