@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas {
+            margin: 10px;
+            background: #fff;
+            border: thin inset #aaaaaa;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="300"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const FONT_HEIGHT = 15;
+        const MARGIN = 35;
+        const HAND_TRUNCATION = canvas.width / 25;
+        const HOUR_HAND_TRUNCATION = canvas.width / 10;
+        const NUMERAL_SPACING = 20;
+        const RADIUS = canvas.width / 2 - MARGIN;
+        const HAND_RADIUS = RADIUS + NUMERAL_SPACING;
+
+        function drawCircle() { }
+        function drawNumberals() { }
+        function drawCenter() { }
+        function darwHand() { }
+        function darwHands() { }
+        function drawClock() { }
+
+
+    </script>
+</body>
+
+</html>

@@ -29,5 +29,16 @@ toBlob(callback, type, ...args)
 
 这里的“绘图环境”包括哪些内容呢？
 
+包括：
+
+1. 坐标变换信息
+2. 剪辑区域
+3. Context 属性
+
+不包括：
+
+1. 路径。路径只能通过 beginPath 来重置路径
+2. 位图。这是 canvas 的属性
+
 
 
