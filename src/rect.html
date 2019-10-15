@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas {
+            margin: 10px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="canvas" width="300" height="300"></canvas>
+<script>
+
+    function getLineWidth() {
+        return 10;
+    }
+
+    function getStrokeStyle1() {
+        return 'blue';
+    }
+
+    function getFillStyle1() {
+        return 'red';
+    }
+
+    function getFillStyle2() {
+        let gradient = context.createLinearGradient(0, 0, canvas.width, 0);
+        gradient.addColorStop(0, 'blue');
+        gradient.addColorStop(0.5, 'white');
+        gradient.addColorStop(1, 'yellow');
+        return gradient;
+    }
+
+    function getFillStyle3() {
+        let gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 10, canvas.width / 2, 0, 100);
+        gradient.addColorStop(0, 'blue');
+        gradient.addColorStop(1, 'yellow');
+        return gradient;
+    }
+
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');
+
+    context.lineWidth = getLineWidth();
+    context.strokeStyle = getStrokeStyle1();
+    context.strokeRect(0, 0, canvas.width, canvas.height);
+
+    context.fillStyle = getFillStyle3();
+    context.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
+
+    canvas.addEventListener('click', () => {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }, false);
+</script>
+</body>
+
+</html>
