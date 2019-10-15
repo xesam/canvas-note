@@ -42,3 +42,21 @@ toBlob(callback, type, ...args)
 
 
 
+## 矩形
+
+clearRect
+strokeRect
+fillRect
+
+## style
+为什么 strokeStyle 和 fillStyle 不叫 strokeColor 和 fillColor？因为除了使用 Color ，还可以使用 CanvasGradient 以及 图案。
+
+
+## CanvasGradient
+
+线性渐变
+
+放射渐变
+
+
+
