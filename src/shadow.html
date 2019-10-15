@@ -32,34 +32,19 @@
         return 'red';
     }
 
-    function getFillStyle2() {
-        let gradient = context.createLinearGradient(0, 0, canvas.width, 0);
-        gradient.addColorStop(0, 'blue');
-        gradient.addColorStop(0.5, 'white');
-        gradient.addColorStop(1, 'yellow');
-        return gradient;
-    }
-
-    function getFillStyle3() {
-        let gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 10, canvas.width / 2, 0, 100);
-        gradient.addColorStop(0, 'blue');
-        gradient.addColorStop(1, 'yellow');
-        return gradient;
-    }
-
-    function getFillStyle4() {
-        let pattern = context.createPattern(null, 'repeat');
-        return pattern;
-    }
-
     function draw() {
+
+        context.shadowColor = 'rgba(0, 0, 0, 0.7)';
+        context.shadowOffsetX = 10;
+        context.shadowOffsetY = 10;
+        context.shadowBlur = 10;
 
         context.lineWidth = getLineWidth();
         context.strokeStyle = getStrokeStyle1();
-        context.strokeRect(0, 0, canvas.width, canvas.height);
+        context.strokeRect(50, 50, 200, 200);
 
-        context.fillStyle = getFillStyle3();
-        context.fillRect(10, 10, canvas.width - 20, canvas.height - 20);
+        context.fillStyle = getFillStyle1();
+        context.fillRect(100, 100, 100, 100);
 
         canvas.addEventListener('click', () => {
             context.clearRect(0, 0, canvas.width, canvas.height);
