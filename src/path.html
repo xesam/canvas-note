@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas {
+            margin: 10px;
+            background: #fff;
+            border: thin inset #aaaaaa;
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="canvas" width="600" height="300"></canvas>
+<script>
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');
+
+    context.strokeStyle = 'blue';
+    context.fillStyle = 'yellow';
+    context.beginPath();
+    context.rect(10.5, 10.5, 50, 50);
+    context.stroke();
+
+    context.beginPath();
+    context.strokeStyle = 'red';
+    context.rect(70.5, 60.5, 50, 50);
+    context.stroke();
+
+    context.save();
+    context.shadowColor = 'rgba(0, 0, 0, 0.7)';
+    context.shadowOffsetX = 12;
+    context.shadowOffsetY = 12;
+    context.shadowBlur = 15;
+
+    context.beginPath();
+    context.arc(300, 200, 50, 0, 2 * Math.PI, true);
+    context.arc(300, 200, 80, 0, 2 * Math.PI, false);
+    context.closePath();
+    context.fill();
+
+    context.shadowColor = undefined;
+    context.shadowOffsetX = 0;
+    context.shadowOffsetY = 0;
+    context.stroke();
+    context.restore();
+</script>
+</body>
+
+</html>

@@ -65,8 +65,25 @@ context.shadowOffsetX
 context.shadowOffsetY
 context.shadowBlur
 
+## 路径
+
+context.arc
+context.beginPath
+context.closePath
+context.fill
+context.rect
+context.stroke
 
 
+## 子路径
+
+    According to the Canvas specification, when you call the arc() method and an
+    existing subpath is in the current path, the method must connect the last point
+    in the existing subpath to the first point on the arc.
+    
+## 路径方向很重要 ！！
+
+## 线段
 
 
 
