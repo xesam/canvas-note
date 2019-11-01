@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas {
+            margin: 10px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script>
+
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    const img = new Image();
+    img.src = 'https://www.baidu.com/img/bd_logo1.png?where=super';
+    img.addEventListener('load', () => {
+        console.info('loaded');
+        context.drawImage(img, 0, 0);
+    }, false);
+
+</script>
+</body>
+
+</html>

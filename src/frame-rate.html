@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas {
+            margin: 10px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script>
+
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+
+    let last = 0;
+
+    function update() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = '#000';
+        context.font = '40px Arial';
+        const now = Date.now();
+        const fps = (1000 / (now - last)).toFixed(0);
+        context.fillText(fps, 100, 100);
+        context.fillText(now, 100, 200);
+        console.log(fps);
+        last = now;
+        requestNext();
+    }
+
+    function requestNext() {
+        window.requestAnimationFrame(update);
+    }
+
+    requestNext()
+
+</script>
+</body>
+
+</html>
