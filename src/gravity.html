@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas {
+            margin: 10px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script>
+
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    const GRAVITY = 980;
+    const GROUND_Y = 550;
+
+    let _timer = null;
+    let ball = {
+        onGround: false,
+        x: 50,
+        y: 50,
+        r: 20,
+        velocity: 0
+    };
+
+    function drawGround() {
+        context.save();
+        context.strokeStyle = 'red';
+        context.beginPath();
+        context.moveTo(0, GROUND_Y);
+        context.lineTo(canvas.width, GROUND_Y);
+        context.stroke();
+        context.restore();
+    }
+
+    function drawBall() {
+        paintBall();
+    }
+
+    function paintBall() {
+        context.save();
+        context.beginPath();
+        context.strokeStyle = 'red';
+        context.fillStyle = 'yellow';
+        context.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+        context.restore();
+    }
+
+    function update(deltaTime) {
+        updateGround(deltaTime);
+        updateBall(deltaTime);
+    }
+
+    function updateGround(deltaTime) {
+
+    }
+
+    function updateBall(deltaTime) {
+        if (ball.onGround) {
+            return
+        }
+        let nextY = ball.y + ball.velocity * deltaTime / 1000;
+        let velocity = ball.velocity;
+        if (nextY + ball.r > GROUND_Y) {
+            nextY = GROUND_Y - ball.r;
+            const revertVelocity = -velocity * 0.8;
+            console.log(revertVelocity);
+            if (Math.abs(revertVelocity) < 40) {
+                velocity = 0;
+                ball.onGround = true;
+            } else {
+                velocity = revertVelocity;
+            }
+        } else {
+            velocity = ball.velocity + deltaTime / 1000 * GRAVITY;
+        }
+        ball.velocity = velocity;
+        ball.y = nextY;
+    }
+
+    let lastTime = null;
+
+    function animate(time) {
+        let deltaTime = 0;
+        if (lastTime) {
+            deltaTime = time - lastTime;
+        }
+        lastTime = time;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        update(deltaTime);
+        drawGround();
+        drawBall();
+        _timer = requestAnimationFrame(animate);
+    }
+
+    _timer = requestAnimationFrame(animate);
+
+</script>
+</body>
+
+</html>
