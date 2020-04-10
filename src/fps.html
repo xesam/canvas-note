@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas {
+            margin: 10px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<dvi>
+    <button id="start">start</button>
+    <button id="pause">pause</button>
+</dvi>
+<canvas id="canvas" width="300" height="300"></canvas>
+<script>
+
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');
+    context.font = '40px Arial';
+
+    let pausedTime = 0;
+    let lastUpdateTime = 0;
+    let lastFpsUpdate = {
+        time: 0,
+        value: 0
+    };
+    let flag = 0;
+
+    function update(now, elapsedTime) {
+        if (elapsedTime === 0) {
+            return;
+        }
+        if (now - lastFpsUpdate.time > 1000) {
+            const fps = Math.round(1000 / elapsedTime);
+            lastFpsUpdate = {
+                time: now,
+                value: fps
+            };
+        }
+    }
+
+    function draw(elapsedTime) {
+        context.fillText(lastFpsUpdate.value, 100, 100);
+        context.fillText(lastFpsUpdate.time, 100, 200);
+    }
+
+    function loop(now) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        if (lastUpdateTime === 0) {
+            lastUpdateTime = now;
+        }
+        const elapsedTime = now - lastUpdateTime;
+        update(now, elapsedTime);
+        draw(elapsedTime);
+        flag = window.requestAnimationFrame(loop);
+        lastUpdateTime = now;
+    }
+
+    function start() {
+        flag = window.requestAnimationFrame(loop);
+    }
+
+    function pause() {
+        window.cancelAnimationFrame(flag);
+    }
+
+    document.getElementById('start').addEventListener('click', start);
+    document.getElementById('pause').addEventListener('click', pause);
+
+</script>
+</body>
+
+</html>

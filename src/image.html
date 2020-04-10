@@ -6,7 +6,7 @@
             background: #ddd;
         }
 
-        #canvas {
+        canvas {
             margin: 10px;
             background: #fff;
         }
@@ -14,18 +14,35 @@
 </head>
 
 <body>
-<canvas id="canvas" width="600" height="600"></canvas>
+<h2>canvas1</h2>
+<canvas id="canvas1" width="400" height="400"></canvas>
+<h2>canvas2</h2>
+<canvas id="canvas2" width="400" height="400"></canvas>
 <script>
 
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
+    const canvas1 = document.getElementById('canvas1');
+    const context1 = canvas1.getContext('2d');
 
-    const img = new Image();
-    img.src = 'https://www.baidu.com/img/bd_logo1.png?where=super';
-    img.addEventListener('load', () => {
-        console.info('loaded');
-        context.drawImage(img, 0, 0);
-    }, false);
+    const canvas2 = document.getElementById('canvas2');
+    const context2 = canvas2.getContext('2d');
+
+    context1.fillStyle = 'blue';
+    const WIDTH = 10;
+    const HEIGHT = 10;
+    context1.fillRect(0, 0, WIDTH, HEIGHT);
+
+    const imgData = context1.getImageData(0, 0, WIDTH, HEIGHT);
+    console.log(imgData);
+    imgData.data.forEach((ele, index, data) => {
+        if (index % 4 !== 3){
+            data[index] = 255 - ele;
+        }
+    });
+
+    console.log(imgData);
+
+    context2.putImageData(imgData, 0, 0, 0, 0, WIDTH, HEIGHT);
+
 
 </script>
 </body>
