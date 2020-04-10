@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background: #ddd;
+        }
+
+        #canvas {
+            margin: 10px;
+            background: #fff;
+            border: thin inset #aaaaaa;
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script>
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');
+
+    context.font = '30pt Arial';
+    context.fillStyle = 'red';
+    context.strokeStyle = 'blue';
+
+    context.save();
+    context.translate(300, 300);
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(300, 0);
+    context.moveTo(0, 0);
+    context.lineTo(0, 150);
+    context.stroke();
+    context.restore();
+
+    context.save();
+    context.translate(300, 300);
+    context.rotate(-Math.PI / 2);
+    context.strokeStyle = 'red';
+    context.fillText('ABC', 0, 0);
+    context.strokeText('ABC', 0, 0);
+    context.save();
+    context.scale(2, -2);
+    context.fillText('ABC', 0, 0);
+    context.strokeText('ABC', 0, 0);
+    context.restore();
+    context.save();
+    context.scale(-2, 2);
+    context.fillText('ABC', 0, 0);
+    context.strokeText('ABC', 0, 0);
+    context.restore();
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(300, 0);
+    context.moveTo(0, 0);
+    context.lineTo(0, 150);
+    context.stroke();
+    context.restore();
+
+</script>
+</body>
+
+</html>
